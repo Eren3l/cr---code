@@ -1,0 +1,207 @@
+/* pages/workout/workout.wxss */
+.page {
+  padding-bottom: 30px;
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.streak-text {
+  font-size: 13px;
+  color: #4A90D9;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-group .tag {
+  margin: 4px;
+}
+
+.template-scroll {
+  display: flex;
+  white-space: nowrap;
+}
+
+.template-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px;
+  margin-right: 10px;
+  background-color: #F5F6FA;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  min-width: 70px;
+}
+
+.template-item.active {
+  background-color: #EDF4FC;
+  border-color: #4A90D9;
+}
+
+.template-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.template-detail {
+  font-size: 12px;
+  color: #999999;
+  margin-top: 4px;
+}
+
+.custom-type-box {
+  margin-top: 10px;
+}
+
+.form-row {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.form-row .form-half:first-child {
+  margin-right: 6px;
+}
+
+.form-row .form-half:last-child {
+  margin-left: 6px;
+}
+
+.form-half {
+  flex: 1;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  color: #999999;
+  margin-bottom: 4px;
+}
+
+.form-section {
+  margin-top: 12px;
+}
+
+.feeling-group {
+  display: flex;
+}
+
+.feeling-group .tag {
+  margin-right: 4px;
+}
+
+.photo-list {
+  display: flex;
+  margin-top: 8px;
+}
+
+.photo-list .photo-item,
+.photo-list .photo-add {
+  margin-right: 8px;
+}
+
+.photo-item {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.photo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+}
+
+.photo-delete {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  background-color: #FF4D4F;
+  color: white;
+  border-radius: 10px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-add {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #CCCCCC;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #CCCCCC;
+}
+
+.btn-group {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-group button:first-child {
+  margin-bottom: 10px;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-type {
+  font-weight: bold;
+  font-size: 15px;
+  display: block;
+}
+
+.record-detail {
+  font-size: 13px;
+  color: #666666;
+  margin-top: 2px;
+  display: block;
+}
+
+.record-time {
+  display: block;
+  margin-top: 2px;
+}
+
+.record-delete {
+  color: #FF4D4F;
+  font-size: 13px;
+  padding: 4px 8px;
+}

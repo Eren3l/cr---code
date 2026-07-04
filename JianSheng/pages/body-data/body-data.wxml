@@ -1,0 +1,76 @@
+<!-- pages/body-data/body-data.wxml -->
+<view class="page">
+
+  <!-- 录入表单 -->
+  <view class="card">
+    <view class="section-title">📏 录入身体数据</view>
+    <view class="text-muted" style="margin-bottom:10px">日期：{{date}}（全部可选填）</view>
+
+    <view class="form-row">
+      <view class="form-half">
+        <text class="form-label">体重 (kg)</text>
+        <input class="input-field" type="digit" placeholder="kg"
+               value="{{form.weight}}" data-field="weight" bindinput="onFormInput" />
+      </view>
+      <view class="form-half">
+        <text class="form-label">体脂 (%)</text>
+        <input class="input-field" type="digit" placeholder="%"
+               value="{{form.bodyFat}}" data-field="bodyFat" bindinput="onFormInput" />
+      </view>
+    </view>
+
+    <view class="form-row">
+      <view class="form-half">
+        <text class="form-label">腰围 (cm)</text>
+        <input class="input-field" type="digit" placeholder="cm"
+               value="{{form.waist}}" data-field="waist" bindinput="onFormInput" />
+      </view>
+      <view class="form-half">
+        <text class="form-label">臀围 (cm)</text>
+        <input class="input-field" type="digit" placeholder="cm"
+               value="{{form.hip}}" data-field="hip" bindinput="onFormInput" />
+      </view>
+    </view>
+
+    <view class="form-row">
+      <view class="form-half">
+        <text class="form-label">胸围 (cm)</text>
+        <input class="input-field" type="digit" placeholder="cm"
+               value="{{form.chest}}" data-field="chest" bindinput="onFormInput" />
+      </view>
+      <view class="form-half">
+        <text class="form-label">手臂围 (cm)</text>
+        <input class="input-field" type="digit" placeholder="cm"
+               value="{{form.arm}}" data-field="arm" bindinput="onFormInput" />
+      </view>
+    </view>
+
+    <view class="form-row">
+      <view class="form-half">
+        <text class="form-label">小腿围 (cm)</text>
+        <input class="input-field" type="digit" placeholder="cm"
+               value="{{form.calf}}" data-field="calf" bindinput="onFormInput" />
+      </view>
+    </view>
+
+    <button class="btn-primary" style="margin-top:15px" bindtap="saveData">保存</button>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="card" wx:if="{{records.length > 0}}">
+    <view class="section-title">📋 历史记录</view>
+    <view class="record-item" wx:for="{{records}}" wx:key="id">
+      <view class="record-info">
+        <text class="record-date">{{item.date}}</text>
+        <text class="text-muted">
+          <text wx:if="{{item.weight}}">体重 {{item.weight}}kg </text>
+          <text wx:if="{{item.bodyFat}}">体脂 {{item.bodyFat}}% </text>
+          <text wx:if="{{item.waist}}">腰围 {{item.waist}}cm</text>
+        </text>
+      </view>
+      <view class="record-delete" data-id="{{item.id}}" bindtap="deleteRecord">删除</view>
+    </view>
+  </view>
+
+  <view style="height: 30px;"></view>
+</view>

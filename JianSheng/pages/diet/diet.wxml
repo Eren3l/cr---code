@@ -1,0 +1,109 @@
+<!-- pages/diet/diet.wxml -->
+<view class="page">
+
+  <!-- 日期 -->
+  <view class="card">
+    <view class="date-header">
+      <text class="date-text">📅 {{date}}</text>
+    </view>
+  </view>
+
+  <!-- 饮水 -->
+  <view class="card">
+    <view class="section-title">💧 今日饮水</view>
+    <view class="water-cups">
+      <view class="cup {{index < waterAmount / cupSize ? 'filled' : ''}}"
+            wx:for="{{cups}}"
+            wx:key="*this"
+            wx:for-index="index">
+        💧
+      </view>
+    </view>
+    <view class="water-info">
+      <text>已喝 <text class="highlight">{{waterAmount}}</text> / {{waterGoal}} ml</text>
+    </view>
+    <view class="progress-bar" style="margin-top: 8px;">
+      <view class="fill {{waterAmount >= waterGoal ? 'over' : ''}}"
+            style="width: {{waterAmount / waterGoal * 100 > 100 ? 100 : waterAmount / waterGoal * 100}}%"></view>
+    </view>
+    <view class="water-btns">
+      <button class="btn-primary" style="flex:1" bindtap="addWater">+ 喝水 ({{cupSize}}ml)</button>
+      <button class="btn-secondary" style="flex:1" bindtap="undrinkWater">撤销</button>
+    </view>
+  </view>
+
+  <!-- 四餐 -->
+  <view class="card" wx:for="{{mealTypes}}" wx:key="key">
+    <view class="meal-header">
+      <text class="section-title">{{item.icon}} {{item.label}}</text>
+      <text class="text-muted">合计 {{mealCalories(item.key)}} kcal</text>
+    </view>
+
+    <!-- 食物列表 -->
+    <view class="food-list" wx:if="{{meals[item.key].length > 0}}">
+      <view class="food-item" wx:for="{{meals[item.key]}}" wx:key="id" wx:for-item="food">
+        <view class="food-info">
+          <text class="food-name">{{food.foodName}}</text>
+          <text class="food-detail">
+            <text wx:if="{{food.calories > 0}}">{{food.calories}} kcal</text>
+            <text wx:if="{{food.note}}"> · {{food.note}}</text>
+          </text>
+        </view>
+        <view class="food-delete" data-id="{{food.id}}" bindtap="deleteFood">✕</view>
+      </view>
+    </view>
+    <view wx:else class="empty-meal text-muted">还没有记录</view>
+
+    <button class="btn-secondary" style="margin-top:10px"
+            data-meal="{{item.key}}" bindtap="openAddModal">
+      + 添加食物
+    </button>
+  </view>
+
+  <!-- 热量合计 -->
+  <view class="card">
+    <view class="section-title">📊 今日摄入</view>
+    <view class="calorie-summary">
+      <text class="calorie-big">{{totalCalories}}</text>
+      <text class="calorie-unit">kcal</text>
+    </view>
+    <view class="progress-bar" style="margin-top: 8px;">
+      <view class="fill {{totalCalories > calorieGoal ? 'over' : ''}}"
+            style="width: {{totalCalories / calorieGoal * 100 > 100 ? 100 : totalCalories / calorieGoal * 100}}%"></view>
+    </view>
+    <view class="text-muted" style="margin-top:6px; text-align:center;">
+      目标 {{calorieGoal}} kcal · {{totalCalories > calorieGoal ? '已超标' : '还差 ' + (calorieGoal - totalCalories) + ' kcal'}}
+    </view>
+  </view>
+
+  <view style="height: 30px;"></view>
+
+  <!-- 添加食物弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddModal}}" bindtap="closeModal"></view>
+  <view class="modal" wx:if="{{showAddModal}}">
+    <view class="modal-title">添加食物</view>
+
+    <view class="form-row">
+      <text class="form-label">食物名称 *</text>
+      <input class="input-field" placeholder="如：鸡蛋、鸡胸肉"
+             value="{{foodForm.foodName}}" data-field="foodName" bindinput="onFoodInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">热量 (kcal)</text>
+      <input class="input-field" type="number" placeholder="估算热量"
+             value="{{foodForm.calories}}" data-field="calories" bindinput="onFoodInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">备注</text>
+      <input class="input-field" placeholder="如：少油、水煮"
+             value="{{foodForm.note}}" data-field="note" bindinput="onFoodInput" />
+    </view>
+
+    <view class="modal-btns">
+      <button class="btn-secondary" bindtap="closeModal">取消</button>
+      <button class="btn-primary" bindtap="addFood">确定</button>
+    </view>
+  </view>
+</view>

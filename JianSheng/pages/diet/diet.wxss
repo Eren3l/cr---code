@@ -1,0 +1,197 @@
+/* pages/diet/diet.wxss */
+.page {
+  padding-bottom: 30px;
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.highlight {
+  color: #4A90D9;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.water-cups {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.water-cups .cup {
+  margin: 0 3px;
+}
+
+.cup {
+  font-size: 28px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.cup.filled {
+  opacity: 1;
+}
+
+.water-info {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.water-btns {
+  display: flex;
+  margin-top: 12px;
+}
+
+.water-btns button:first-child {
+  margin-right: 5px;
+}
+
+.water-btns button:last-child {
+  margin-left: 5px;
+}
+
+.meal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.food-list {
+  margin-bottom: 8px;
+}
+
+.food-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.food-item:last-child {
+  border-bottom: none;
+}
+
+.food-info {
+  flex: 1;
+}
+
+.food-name {
+  font-size: 15px;
+  font-weight: bold;
+  display: block;
+}
+
+.food-detail {
+  font-size: 13px;
+  color: #999999;
+  margin-top: 2px;
+  display: block;
+}
+
+.food-delete {
+  width: 24px;
+  height: 24px;
+  background-color: #FF4D4F;
+  color: white;
+  border-radius: 12px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-meal {
+  padding: 15px 0;
+  text-align: center;
+}
+
+.calorie-summary {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.calorie-big {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4A90D9;
+}
+
+.calorie-unit {
+  font-size: 15px;
+  color: #999999;
+  margin-left: 4px;
+}
+
+/* 弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 20px 15px;
+  z-index: 101;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.modal-btns {
+  display: flex;
+  margin-top: 15px;
+}
+
+.modal-btns button {
+  flex: 1;
+}
+
+.modal-btns button:first-child {
+  margin-right: 5px;
+}
+
+.modal-btns button:last-child {
+  margin-left: 5px;
+}

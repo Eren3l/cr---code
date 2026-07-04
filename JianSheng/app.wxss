@@ -1,0 +1,127 @@
+/* app.wxss - 简生全局样式 */
+page {
+  background-color: #F5F6FA;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 15px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+/* ===== 通用卡片样式 ===== */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 12px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== 主按钮 ===== */
+.btn-primary {
+  background-color: #4A90D9;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:active {
+  background-color: #3A7BC8;
+}
+
+/* ===== 次要按钮 ===== */
+.btn-secondary {
+  background-color: transparent;
+  color: #4A90D9;
+  border: 1px solid #4A90D9;
+  border-radius: 8px;
+  font-size: 15px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== 页面标题 ===== */
+.page-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  padding: 15px 15px 5px;
+}
+
+/* ===== 辅助文字 ===== */
+.text-muted {
+  color: #999999;
+  font-size: 13px;
+}
+
+/* ===== 分割线 ===== */
+.divider {
+  height: 1px;
+  background-color: #EEEEEE;
+  margin: 12px 0;
+}
+
+/* ===== 标签 Tag ===== */
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin: 4px;
+  background-color: #F5F6FA;
+  color: #666666;
+}
+
+.tag.active {
+  background-color: #EDF4FC;
+  color: #4A90D9;
+  border: 1px solid #4A90D9;
+}
+
+.tag-hover {
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+/* ===== 输入框 ===== */
+.input-field {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #EEEEEE;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #FAFAFA;
+}
+
+.input-field:focus {
+  border-color: #4A90D9;
+  background-color: #FFFFFF;
+}
+
+/* ===== 进度条 ===== */
+.progress-bar {
+  height: 8px;
+  background-color: #EEEEEE;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  background-color: #4A90D9;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-bar .fill.over {
+  background-color: #FF4D4F;
+}

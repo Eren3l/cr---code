@@ -1,0 +1,125 @@
+<!-- pages/calendar/calendar.wxml -->
+<view class="page">
+
+  <!-- 月份切换 -->
+  <view class="card">
+    <view class="month-switcher">
+      <view class="month-arrow" bindtap="prevMonth">◀</view>
+      <text class="month-title">{{currentYear}} 年 {{currentMonth}} 月</text>
+      <view class="month-arrow" bindtap="nextMonth">▶</view>
+    </view>
+
+    <!-- 星期头 -->
+    <view class="weekday-row">
+      <text class="weekday" wx:for="{{weekdays}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <!-- 日期网格 -->
+    <view class="date-grid">
+      <view class="date-cell {{item.empty ? 'empty' : ''}} {{item.checked ? 'checked' : ''}} {{item.isToday ? 'today' : ''}}"
+            wx:for="{{calendarGrid}}"
+            wx:for-item="week"
+            wx:key="*this"
+            wx:for-index="rowIdx">
+        <view class="date-cell {{cell.empty ? 'empty' : ''}} {{cell.checked ? 'checked' : ''}} {{cell.isToday ? 'today' : ''}}"
+              wx:for="{{week}}"
+              wx:for-item="cell"
+              wx:key="day"
+              data-date="{{cell.date}}"
+              data-day="{{cell.day}}"
+              bindtap="tapDay">
+          {{cell.day}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 图例 -->
+    <view class="legend">
+      <view class="legend-item"><view class="legend-dot checked"></view> 已打卡</view>
+      <view class="legend-item"><view class="legend-dot unchecked"></view> 未打卡</view>
+      <view class="legend-item"><view class="legend-dot today-dot"></view> 今天</view>
+    </view>
+  </view>
+
+  <!-- 月度统计 -->
+  <view class="card">
+    <view class="section-title">📊 {{currentMonth}}月统计</view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-num">{{stats.workoutDays}}</text>
+        <text class="stat-label">训练天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.dietDays}}</text>
+        <text class="stat-label">饮食记录天数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num streak">{{stats.streak}}</text>
+        <text class="stat-label">连续打卡</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{stats.totalWorkouts}}</text>
+        <text class="stat-label">总训练次数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 目标 -->
+  <view class="card">
+    <view class="section-title">🎯 我的目标</view>
+    <view wx:if="{{goals.length === 0}}" class="text-muted" style="text-align:center;padding:20px 0;">
+      还没有设置目标
+    </view>
+    <view class="goal-item" wx:for="{{goals}}" wx:key="id">
+      <view class="goal-info">
+        <text class="goal-name">{{item.type === 'weekly_workouts' ? '每周训练' : item.type === 'daily_water' ? '每日饮水' : item.type}}</text>
+        <text class="goal-target">目标: {{item.target}}{{item.type === 'daily_water' ? 'ml' : '次'}}</text>
+      </view>
+    </view>
+    <button class="btn-secondary" style="margin-top:10px" bindtap="openMakeup">📝 补卡</button>
+  </view>
+
+  <view style="height: 30px;"></view>
+
+  <!-- 日期详情弹窗 -->
+  <view class="modal-mask" wx:if="{{showDayModal}}" bindtap="closeDayModal"></view>
+  <view class="modal" wx:if="{{showDayModal}}">
+    <view class="modal-title">{{selectedDate}}</view>
+    <view wx:if="{{selectedDayRecords.length === 0}}" class="text-muted" style="text-align:center;padding:20px;">
+      当天无记录
+    </view>
+    <view class="day-record" wx:for="{{selectedDayRecords}}" wx:key="id">
+      <view wx:if="{{item._type === 'workout'}}">
+        <text class="record-tag workout-tag">运动</text>
+        <text>{{item.type}}</text>
+        <text class="text-muted" wx:if="{{item.duration}}"> · {{item.duration}}分钟</text>
+        <text class="text-muted" wx:if="{{item.isMakeup}}"> · 补卡</text>
+      </view>
+      <view wx:else>
+        <text class="record-tag diet-tag">饮食</text>
+        <text>{{item.foodName}}</text>
+        <text class="text-muted" wx:if="{{item.calories > 0}}"> · {{item.calories}}kcal</text>
+      </view>
+    </view>
+    <button class="btn-primary" style="margin-top:15px" bindtap="closeDayModal">关闭</button>
+  </view>
+
+  <!-- 补卡弹窗 -->
+  <view class="modal-mask" wx:if="{{showMakeupModal}}" bindtap="closeMakeup"></view>
+  <view class="modal" wx:if="{{showMakeupModal}}">
+    <view class="modal-title">📝 补卡</view>
+    <view class="form-row">
+      <text class="form-label">选择补卡日期</text>
+      <input class="input-field" type="date" value="{{makeupDate}}" bindchange="onMakeupDateChange" />
+    </view>
+    <view class="form-row">
+      <text class="form-label">断卡原因（可选）</text>
+      <input class="input-field" placeholder="比如：加班、身体不适..."
+             value="{{makeupReason}}" bindinput="onMakeupReasonInput" />
+    </view>
+    <view class="modal-btns">
+      <button class="btn-secondary" bindtap="closeMakeup">取消</button>
+      <button class="btn-primary" bindtap="submitMakeup">确认补卡</button>
+    </view>
+  </view>
+</view>

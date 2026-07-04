@@ -1,0 +1,62 @@
+/* pages/body-data/body-data.wxss */
+.page {
+  padding-bottom: 30px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-row {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.form-row .form-half:first-child {
+  margin-right: 6px;
+}
+
+.form-row .form-half:last-child {
+  margin-left: 6px;
+}
+
+.form-half {
+  flex: 1;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  color: #999999;
+  margin-bottom: 4px;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-date {
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+}
+
+.record-delete {
+  color: #FF4D4F;
+  font-size: 13px;
+  padding: 4px 8px;
+}

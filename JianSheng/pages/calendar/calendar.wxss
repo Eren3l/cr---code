@@ -1,0 +1,243 @@
+/* pages/calendar/calendar.wxss */
+.page {
+  padding-bottom: 30px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.month-switcher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.month-arrow {
+  font-size: 16px;
+  padding: 8px 12px;
+  color: #4A90D9;
+}
+
+.month-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.weekday-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: #999999;
+  padding: 6px 0;
+}
+
+.date-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-cell {
+  display: flex;
+}
+
+.date-cell .date-cell {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  margin: 2px;
+  border-radius: 6px;
+}
+
+.date-cell .date-cell.empty {
+  /* 空单元格无内容 */
+}
+
+.date-cell .date-cell.checked {
+  background-color: #52C41A;
+  color: white;
+  font-weight: bold;
+}
+
+.date-cell .date-cell.today {
+  border: 2px solid #4A90D9;
+  color: #4A90D9;
+  font-weight: bold;
+}
+
+.date-cell .date-cell.today.checked {
+  background-color: #52C41A;
+  color: white;
+  border: 2px solid #4A90D9;
+}
+
+/* 图例 */
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #999999;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 4px;
+}
+
+.legend-dot.checked {
+  background-color: #52C41A;
+}
+
+.legend-dot.unchecked {
+  background-color: #EEEEEE;
+}
+
+.legend-dot.today-dot {
+  border: 2px solid #4A90D9;
+  background-color: transparent;
+}
+
+/* 统计 */
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  width: 50%;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4A90D9;
+  display: block;
+}
+
+.stat-num.streak {
+  color: #52C41A;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #999999;
+  margin-top: 4px;
+  display: block;
+}
+
+/* 目标 */
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.goal-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.goal-target {
+  font-size: 13px;
+  color: #999999;
+  margin-left: 8px;
+}
+
+/* 弹窗通用 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 20px 15px;
+  z-index: 101;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.modal-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-btns button {
+  flex: 1;
+}
+
+.day-record {
+  padding: 10px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.day-record:last-child {
+  border-bottom: none;
+}
+
+.record-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-right: 6px;
+  color: white;
+}
+
+.workout-tag {
+  background-color: #4A90D9;
+}
+
+.diet-tag {
+  background-color: #52C41A;
+}

@@ -1,0 +1,63 @@
+<!-- pages/goal-setting/goal-setting.wxml -->
+<view class="page">
+
+  <!-- 已有目标 -->
+  <view class="card" wx:if="{{goals.length === 0}}">
+    <view class="empty-hint">
+      <text style="font-size:40px">🎯</text>
+      <text class="text-muted" style="margin-top:10px">还没有设置目标</text>
+    </view>
+  </view>
+
+  <view class="card" wx:for="{{goals}}" wx:key="id">
+    <view class="goal-item">
+      <view class="goal-info">
+        <text class="goal-type">{{item.type === 'weekly_workouts' ? '每周训练次数' : item.type === 'daily_water' ? '每日饮水' : item.type === 'daily_calories' ? '每日热量' : item.type}}</text>
+        <text class="goal-target">目标: {{item.target}}{{item.type === 'daily_water' ? 'ml' : item.type === 'daily_calories' ? 'kcal' : '次'}}</text>
+      </view>
+      <view class="goal-actions">
+        <text class="goal-edit" data-id="{{item.id}}" catchtap="openForm">✏️</text>
+        <text class="goal-delete" data-id="{{item.id}}" catchtap="deleteGoal">🗑️</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-group">
+    <button class="btn-primary" bindtap="openForm">+ 新建目标</button>
+  </view>
+
+  <!-- 编辑/新增弹窗 -->
+  <view class="modal-mask" wx:if="{{showForm}}" bindtap="closeForm"></view>
+  <view class="modal" wx:if="{{showForm}}">
+    <view class="modal-title">{{editGoal ? '编辑目标' : '新建目标'}}</view>
+
+    <view class="form-row">
+      <text class="form-label">目标类型</text>
+      <view class="tag-group">
+        <view class="tag {{form.type === 'weekly_workouts' ? 'active' : ''}}"
+              hover-class="tag-hover" data-type="weekly_workouts" bindtap="selectType">每周训练次数</view>
+        <view class="tag {{form.type === 'daily_water' ? 'active' : ''}}"
+              hover-class="tag-hover" data-type="daily_water" bindtap="selectType">每日饮水</view>
+        <view class="tag {{form.type === 'daily_calories' ? 'active' : ''}}"
+              hover-class="tag-hover" data-type="daily_calories" bindtap="selectType">每日热量</view>
+      </view>
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">目标值</text>
+      <input class="input-field" type="number"
+             placeholder="{{form.type === 'daily_water' ? '如 2000' : form.type === 'daily_calories' ? '如 2000' : '如 4'}}"
+             value="{{form.target}}" bindinput="onTargetInput" />
+      <text class="text-muted" style="font-size:12px">
+        {{form.type === 'daily_water' ? '单位：毫升(ml)' : form.type === 'daily_calories' ? '单位：千卡(kcal)' : '单位：次/周'}}
+      </text>
+    </view>
+
+    <view class="modal-btns">
+      <button class="btn-secondary" bindtap="closeForm">取消</button>
+      <button class="btn-primary" bindtap="saveGoal">保存</button>
+    </view>
+  </view>
+
+  <view style="height: 30px;"></view>
+</view>

@@ -1,0 +1,35 @@
+<!-- pages/template-manage/template-manage.wxml -->
+<view class="page">
+
+  <view class="card" wx:if="{{templates.length === 0}}">
+    <view class="empty-hint">
+      <text style="font-size:40px">📋</text>
+      <text class="text-muted" style="margin-top:10px">还没有训练模板</text>
+      <text class="text-muted" style="font-size:12px">在运动打卡页可以将填写的内容保存为模板</text>
+    </view>
+  </view>
+
+  <view class="card" wx:for="{{templates}}" wx:key="id">
+    <view class="tpl-item" data-id="{{item.id}}" bindtap="editTemplate">
+      <view class="tpl-info">
+        <text class="tpl-name">{{item.name}}</text>
+        <text class="tpl-detail text-muted">
+          {{item.type}}
+          <text wx:if="{{item.bodyPart}}"> · {{item.bodyPart}}</text>
+          <text wx:if="{{item.sets}}"> · {{item.sets}}组</text>
+          <text wx:if="{{item.reps}}"> · {{item.reps}}次</text>
+          <text wx:if="{{item.duration}}"> · {{item.duration}}分钟</text>
+        </text>
+      </view>
+      <view class="tpl-actions">
+        <view class="tpl-delete" data-id="{{item.id}}" catchtap="deleteTemplate">🗑️</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-group">
+    <button class="btn-primary" bindtap="newTemplate">+ 新建模板</button>
+  </view>
+
+  <view style="height: 30px;"></view>
+</view>

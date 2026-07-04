@@ -1,0 +1,61 @@
+<!-- pages/template-edit/template-edit.wxml -->
+<view class="page">
+
+  <view class="card">
+    <view class="section-title">{{isEdit ? '编辑模板' : '新建模板'}}</view>
+
+    <view class="form-row">
+      <text class="form-label">模板名称 *</text>
+      <input class="input-field" placeholder="如：胸肌日、晨跑5km"
+             value="{{form.name}}" data-field="name" bindinput="onFormInput" />
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">运动类型 *</text>
+      <view class="tag-group">
+        <view class="tag {{form.type === item ? 'active' : ''}}"
+              wx:for="{{workoutTypes}}" wx:key="*this"
+              hover-class="tag-hover" data-type="{{item}}" bindtap="selectType">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="form-row">
+      <text class="form-label">训练部位</text>
+      <view class="tag-group">
+        <view class="tag {{form.bodyPart === item ? 'active' : ''}}"
+              wx:for="{{bodyParts}}" wx:key="*this"
+              hover-class="tag-hover" data-part="{{item}}" bindtap="selectBodyPart">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="form-row">
+      <view class="form-half">
+        <text class="form-label">组数</text>
+        <input class="input-field" type="number" placeholder="组"
+               value="{{form.sets}}" data-field="sets" bindinput="onFormInput" />
+      </view>
+      <view class="form-half">
+        <text class="form-label">次数</text>
+        <input class="input-field" type="number" placeholder="次"
+               value="{{form.reps}}" data-field="reps" bindinput="onFormInput" />
+      </view>
+    </view>
+
+    <view class="form-row">
+      <view class="form-half">
+        <text class="form-label">重量 (kg)</text>
+        <input class="input-field" type="digit" placeholder="kg"
+               value="{{form.weight}}" data-field="weight" bindinput="onFormInput" />
+      </view>
+      <view class="form-half">
+        <text class="form-label">时长 (分钟)</text>
+        <input class="input-field" type="number" placeholder="分钟"
+               value="{{form.duration}}" data-field="duration" bindinput="onFormInput" />
+      </view>
+    </view>
+
+    <button class="btn-primary" style="margin-top:15px" bindtap="save">保存模板</button>
+  </view>
+
+  <view style="height: 30px;"></view>
+</view>

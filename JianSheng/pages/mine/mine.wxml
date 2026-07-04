@@ -1,0 +1,75 @@
+<!-- pages/mine/mine.wxml -->
+<view class="page">
+
+  <!-- 用户卡片 -->
+  <view class="card user-card">
+    <view class="user-avatar" bindtap="getUserProfile">
+      <image wx:if="{{hasUserInfo}}" src="{{userInfo.avatarUrl}}" class="avatar-img" />
+      <text wx:else class="avatar-placeholder">👤</text>
+    </view>
+    <view class="user-info">
+      <text class="user-name" wx:if="{{hasUserInfo}}">{{userInfo.nickName}}</text>
+      <text class="user-name" wx:else>点击登录</text>
+      <text class="text-muted">已坚持 {{totalDays}} 天 · 累计训练 {{totalWorkouts}} 次</text>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="card">
+    <view class="menu-item" data-url="templates" bindtap="navigateTo">
+      <text>📋 训练模板管理</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="menu-item" data-url="bodydata" bindtap="navigateTo">
+      <text>📏 身体数据记录</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 最近身体数据 -->
+  <view class="card" wx:if="{{bodyDataList.length > 0}}">
+    <view class="section-title">📏 最近身体数据</view>
+    <view class="body-data-item" wx:for="{{bodyDataList}}" wx:key="id">
+      <text class="body-date">{{item.date}}</text>
+      <text class="text-muted">
+        <text wx:if="{{item.weight}}">体重 {{item.weight}}kg </text>
+        <text wx:if="{{item.bodyFat}}">体脂 {{item.bodyFat}}%</text>
+      </text>
+    </view>
+  </view>
+
+  <!-- 设置 -->
+  <view class="card">
+    <view class="section-title">⚙️ 设置</view>
+    <view class="menu-item" data-url="goals" bindtap="navigateTo">
+      <text>🎯 目标设置</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="menu-item" data-url="help" bindtap="navigateTo">
+      <text>❓ 使用帮助</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="menu-item" data-url="about" bindtap="navigateTo">
+      <text>ℹ️ 关于简生</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="card">
+    <view class="menu-item" bindtap="exportData">
+      <text>📤 导出数据</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="divider"></view>
+    <view class="menu-item danger" bindtap="clearData">
+      <text>🗑️ 清除所有数据</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <view style="height: 30px;"></view>
+</view>

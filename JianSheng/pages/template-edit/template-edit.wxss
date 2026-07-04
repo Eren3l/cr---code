@@ -1,0 +1,39 @@
+/* pages/template-edit/template-edit.wxss */
+.page {
+  padding-bottom: 30px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 6px;
+}
+
+.form-row .form-half {
+  display: inline-block;
+  width: calc(50% - 6px);
+}
+
+.form-row .form-half:first-child {
+  margin-right: 12px;
+}
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-group .tag {
+  margin: 3px;
+}

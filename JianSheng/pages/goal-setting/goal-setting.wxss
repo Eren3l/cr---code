@@ -1,0 +1,114 @@
+/* pages/goal-setting/goal-setting.wxss */
+.page {
+  padding-bottom: 30px;
+}
+
+.empty-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goal-info {
+  flex: 1;
+}
+
+.goal-type {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+}
+
+.goal-target {
+  font-size: 13px;
+  color: #999999;
+  margin-top: 4px;
+  display: block;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.goal-edit, .goal-delete {
+  font-size: 18px;
+  padding: 6px;
+}
+
+.btn-group {
+  margin: 15px;
+}
+
+/* 弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 20px 15px;
+  z-index: 101;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 6px;
+}
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-group .tag {
+  margin: 3px;
+}
+
+.modal-btns {
+  display: flex;
+  margin-top: 15px;
+}
+
+.modal-btns button {
+  flex: 1;
+}
+
+.modal-btns button:first-child {
+  margin-right: 5px;
+}
+
+.modal-btns button:last-child {
+  margin-left: 5px;
+}

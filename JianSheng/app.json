@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/workout/workout",
+    "pages/diet/diet",
+    "pages/calendar/calendar",
+    "pages/mine/mine",
+    "pages/template-manage/template-manage",
+    "pages/template-edit/template-edit",
+    "pages/body-data/body-data",
+    "pages/goal-setting/goal-setting"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#4A90D9",
+    "navigationBarTitleText": "简生",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F6FA"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90D9",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/workout/workout",
+        "text": "运动"
+      },
+      {
+        "pagePath": "pages/diet/diet",
+        "text": "饮食"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
